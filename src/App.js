@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import getAll from './fetchers.js'
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state={}
+
+  }
+  
+  componentDidMount(){
+   getAll().then((data) => {
+
+    this.setState({
+      launches: data[0].data,
+      launchpads: data[1].data
+    })
+   })
+  }
+
+
   render() {
+    console.log(this.state)
+    if(Array.isArray(this.state.launches)){
+          var launchesList = this.state.launches.map((lnch, idx)=> {
+        return <div>{lnch.details}</div>
+      })
+    }
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div>{launchesList}</div>
       </div>
     );
   }
