@@ -23,7 +23,16 @@ class App extends Component {
     console.log(this.state)
     if(Array.isArray(this.state.launches)){
           var launchesList = this.state.launches.map((lnch, idx)=> {
-        return <div>{lnch.details}</div>
+              lnch.launch_success = JSON.stringify(lnch.launch_success)
+        return (
+          <div key={idx} className='row'>
+          <div className='cell'>{lnch.launch_year}</div>
+          <div className='cell'>{lnch.mission_name}</div>
+          <div className='cell'>{lnch.launch_success}</div>
+
+            
+          </div>
+          )
       })
     }
     return (

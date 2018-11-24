@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  flex: 1;
 }
 
 .App-logo {
@@ -17,7 +18,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.row {
+  display: flex;
+ /* flex: 1;*/
+  flex-direction: row;
+}
+.cell {
+  flex: .3;
+}
 .App-link {
   color: #61dafb;
 }
